@@ -6,7 +6,7 @@ import { Form } from 'react-final-form';
 import { FormContent, FormActions, FormError, InputRow } from './styles/FormStyles';
 import { TextButton } from './styles/ButtonStyles';
 import FormInputField from './FormInputField';
-import { CURRENT_USER_QUERY } from './User';
+// import { CURRENT_USER_QUERY } from './User';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($name: String!, $email: String!, $password: String!) {
@@ -22,7 +22,8 @@ const SIGNUP_MUTATION = gql`
 class Signup extends Component {
   render() {
     return (
-      <Mutation mutation={SIGNUP_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
+      <Mutation mutation={SIGNUP_MUTATION}>
+    
         {(signup, { loading, error }) => (
           <Form onSubmit={formData => signup({ variables: formData })}>
             {({ handleSubmit, pristine, dirtySinceLastSubmit }) => (
