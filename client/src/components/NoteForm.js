@@ -44,6 +44,7 @@ class NoteForm extends Component {
           <FullPageForm
             onSubmit={event => {
               handleSubmit(event);
+              navigate(`/deck/${this.props.initialValues.deck.slug}`)
               form.reset({ deck: values.deck, noteType: values.noteType });
             }}
           >
