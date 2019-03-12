@@ -67,5 +67,9 @@ exports.resolvers = {
 
   Mutation: {
     reviewCard
-  }
+  },
+
+  // Card: {
+  //   template: getTemplateForCard
+  // }
 };

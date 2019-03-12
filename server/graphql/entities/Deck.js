@@ -47,6 +47,8 @@ exports.typeDef = gql`
 `;
 
 const getDeck = (_, { where = {} }, { db }) => {
+  console.log(where);
+  
   return db.deck.findOne(where);
 };
 

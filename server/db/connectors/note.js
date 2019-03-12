@@ -16,6 +16,12 @@ function generateNoteModel({ user } = {}) {
     return Note.findOne(createFilter(where, user));
   };
 
+  const deleteOne = (where = {}) => {
+    checkAuth(user);
+    console.log('delete function in controller reached!');
+    return Note.deleteOne(createFilter(where, user));
+  }
+
   const findOneAndUpdate = (where = {}, update = {}) => {
     checkAuth(user);
     // * If deck changed, find all cards and update them as well
@@ -70,6 +76,7 @@ function generateNoteModel({ user } = {}) {
   return {
     find,
     findOne,
+    deleteOne,
     findOneAndUpdate,
     create
   };
