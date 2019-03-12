@@ -8,6 +8,7 @@ exports.typeDef = gql`
 
   extend type Mutation {
     reviewCard(data: CardReviewInput!): Card!
+    deleteCard(data: CardDeleteInput!): Card!
   }
 
   type Card {
@@ -22,6 +23,10 @@ exports.typeDef = gql`
   }
 
   input CardWhereUniqueInput {
+    id: ID!
+  }
+
+  input CardDeleteInput {
     id: ID!
   }
 
@@ -51,6 +56,12 @@ const getCard = (_, { where }, { db }) => {
   return db.card.findOne(where);
 };
 
+const deleteCard = (_, { data }, { db }) => {
+  console.log('graphql reached', data.id)
+  const id = data.id
+  return db.card.deleteOne({id});
+};
+
 const allCards = (_, { where }, { db }) => {
   return db.card.find(where);
 };
@@ -66,7 +77,8 @@ exports.resolvers = {
   },
 
   Mutation: {
-    reviewCard
+    reviewCard,
+    deleteCard
   },
 
   // Card: {

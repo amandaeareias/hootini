@@ -104,6 +104,12 @@ function generateDeckModel({ user } = {}) {
     return result.length > 0 ? result[0] : null;
   };
 
+  const deleteDeck = async data => {
+    checkAuth(user);
+    await Deck.deleteOne({_id: data.id});
+    return data;
+  };
+
   const create = input => {
     checkAuth(user);
     return new Deck({ ...input, ...addUserInfo(user) }).save();
@@ -112,7 +118,8 @@ function generateDeckModel({ user } = {}) {
   return {
     find,
     findOne,
-    create
+    create,
+    deleteDeck
   };
 }
 

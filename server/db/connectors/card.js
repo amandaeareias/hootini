@@ -122,6 +122,13 @@ function generateCardModel({ user } = {}) {
     return Card.findOne(createFilter(where, user));
   };
 
+  const deleteOne = async (data = {}) => {
+    console.log('model reached', data)
+    checkAuth(user);
+    await Card.deleteOne(createFilter(data, user));
+    return data;
+  };
+
   const review = async ({ id, answer, timeOfReview }) => {
     checkAuth(user);
     const reviewedCard = await findOne(createFilter({ _id: id }, user));
@@ -142,6 +149,7 @@ function generateCardModel({ user } = {}) {
   return {
     find,
     findOne,
+    deleteOne,
     review
   };
 }

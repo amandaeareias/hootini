@@ -10,6 +10,7 @@ exports.typeDef = gql`
   extend type Mutation {
     createDeck(data: DeckCreateInput!): Deck!
     updateDeck(data: DeckUpdateInput!): Deck!
+    deleteDeck(data: DeckDeleteInput! ): Deck!
   }
 
   type Deck {
@@ -44,12 +45,18 @@ exports.typeDef = gql`
   input DeckWhereInput {
     name: String
   }
+
+  input DeckDeleteInput {
+    id: ID
+  }
 `;
 
-const getDeck = (_, { where = {} }, { db }) => {
-  console.log(where);
-  
+const getDeck = (_, { where = {} }, { db }) => {  
   return db.deck.findOne(where);
+};
+
+const deleteDeck = (_, { data = {} }, { db }) => { 
+  return db.deck.deleteDeck(data);
 };
 
 const allDecks = async (_, { where = {} }, { db }) => {
@@ -74,6 +81,7 @@ exports.resolvers = {
 
   Mutation: {
     createDeck,
-    updateDeck
+    updateDeck,
+    deleteDeck
   }
 };
