@@ -57,9 +57,8 @@ const getCard = (_, { where }, { db }) => {
 };
 
 const deleteCard = (_, { data }, { db }) => {
-  console.log('graphql reached', data.id)
   const id = data.id
-  return db.card.deleteOne({id});
+  return db.card.deleteOne({ id });
 };
 
 const allCards = (_, { where }, { db }) => {
@@ -81,7 +80,7 @@ exports.resolvers = {
     deleteCard
   },
 
-  // Card: {
-  //   template: getTemplateForCard
-  // }
+  Card: {
+    template: getTemplateForCard
+  }
 };

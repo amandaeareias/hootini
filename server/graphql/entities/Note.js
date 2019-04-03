@@ -66,8 +66,7 @@ const updateNote = (_, { data }, { db }) => {
 
 const deleteNote = (_, { data }, { db }) => {
   const { id } = data;
-  console.log('delete function in graphql reached!', id);
-  return db.note.deleteOne({id});
+  return db.note.deleteOne({ id });
 };
 
 exports.resolvers = {

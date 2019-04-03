@@ -59,9 +59,7 @@ const me = (_, __, { req }) => {
 };
 
 const signup = async (_, { data: { email, password, name } }, { db, res }) => {
-  // Create new user
-  console.log(email, password, name);
-  
+  // Create new user  
   const newUser = await db.user.create({
     email: email,
     password: await bcrypt.hash(password, 10),

@@ -18,7 +18,6 @@ function generateNoteModel({ user } = {}) {
 
   const deleteOne = (where = {}) => {
     checkAuth(user);
-    console.log('delete function in controller reached!');
     return Note.deleteOne(createFilter(where, user));
   }
 

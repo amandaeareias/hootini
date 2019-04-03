@@ -21,12 +21,9 @@ const SIGNUP_MUTATION = gql`
 
 
 class Signup extends Component {
-  
   render() {
-    
     return (
       <Mutation mutation={SIGNUP_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
-    
         {(signup, { loading, error }) => (
           <Form onSubmit={formData => signup({ variables: formData })}>
             {({ handleSubmit, pristine, dirtySinceLastSubmit }) => (

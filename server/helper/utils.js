@@ -30,9 +30,7 @@ const storeUserInCookie = (user, res) => {
 
 const getUserIdFromCookie = req => {
   const { token } = req.cookies;
-  console.log(token);
   if (token) {
-    
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
     // Put the userId onto the req for future requests to access
     return userId;

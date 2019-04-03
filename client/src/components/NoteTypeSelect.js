@@ -39,7 +39,6 @@ class NoteTypeSelect extends Component {
               if (error) {
                 return <p>Error! {error.message}</p>;
               }
-              console.log('allnoteTypes', allNoteTypes);
               return allNoteTypes.map((noteType, index) => (
                 <Item
                   {...getItemProps({

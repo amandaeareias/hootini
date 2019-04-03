@@ -123,7 +123,6 @@ function generateCardModel({ user } = {}) {
   };
 
   const deleteOne = async (data = {}) => {
-    console.log('model reached', data)
     checkAuth(user);
     await Card.deleteOne(createFilter(data, user));
     return data;
