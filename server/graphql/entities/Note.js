@@ -9,7 +9,6 @@ exports.typeDef = gql`
   extend type Mutation {
     createNote(data: NoteCreateInput!): NoteCreateResult!
     updateNote(data: NoteUpdateInput!): Note!
-    deleteNote(data: NoteDeleteInput!): Note!
   }
 
   type Note {
@@ -33,11 +32,6 @@ exports.typeDef = gql`
     deck: ID
     noteType: ID
     fields: [NoteFieldUpdateInput!]
-  }
-
-  input NoteDeleteInput {
-    id: ID!
-    deck: ID
   }
 
   input NoteCreateInput {
@@ -64,11 +58,6 @@ const updateNote = (_, { data }, { db }) => {
   return db.note.findOneAndUpdate({ id }, update);
 };
 
-const deleteNote = (_, { data }, { db }) => {
-  const { id } = data;
-  return db.note.deleteOne({ id });
-};
-
 exports.resolvers = {
   Query: {
     note: getNote,
@@ -78,6 +67,5 @@ exports.resolvers = {
   Mutation: {
     createNote,
     updateNote,
-    deleteNote
   }
 };
