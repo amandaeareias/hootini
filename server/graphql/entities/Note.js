@@ -66,6 +66,6 @@ exports.resolvers = {
 
   Mutation: {
     createNote,
-    updateNote,
+    updateNote
   }
 };
