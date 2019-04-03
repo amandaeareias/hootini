@@ -19,7 +19,6 @@ const SIGNUP_MUTATION = gql`
   }
 `;
 
-
 class Signup extends Component {
   render() {
     return (

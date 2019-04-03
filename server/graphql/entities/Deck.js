@@ -51,7 +51,7 @@ exports.typeDef = gql`
   }
 `;
 
-const getDeck = (_, { where = {} }, { db }) => {  
+const getDeck = (_, { where = {} }, { db }) => {
   return db.deck.findOne(where);
 };
 
